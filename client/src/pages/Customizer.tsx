@@ -29,9 +29,22 @@ const Customizer = () => {
       case "filepicker":
         return <FilePicker file={file} setFile={setFile} readFile={readFile} />
       case "aipicker": 
-        return <AIPicker/>
+        return <AIPicker prompt={prompt} setPrompt={setPrompt} generatingImg={generatingImg} handleSubmit={handleSubmit} />
       default:
         return null;
+    }
+  }
+
+  async function handleSubmit(type: any) {
+    if(!prompt) return alert("Please enter a prompt!")
+
+    try {
+
+    } catch(error) {
+      alert(error)
+    } finally {
+      setGeneratingImg(false);
+      setActiveEditorTab("")
     }
   }
 
@@ -47,6 +60,13 @@ const Customizer = () => {
         state.isLogoTexture = true 
         state.isFullTexture = false
     }
+
+    setActiveFilterTab(prevState => {
+      return {
+        ...prevState,
+        [tabName]: !prevState[tabName]
+      }
+    })
   }
 
   function handleDecals(type: any, result: any) {
@@ -89,7 +109,7 @@ const Customizer = () => {
 
         <motion.div className="filtertabs-container" {...slideAnimation("up")}>
           {FilterTabs.map(tab => (
-            <Tab key={tab.name} tab={tab} isFilterTab isActiveTab="" handleClick={() => {}} />
+            <Tab key={tab.name} tab={tab} isFilterTab isActiveTab={activeFilterTab[tab.name]} handleClick={() => handleActiveFilterTab(tab.name)} />
           ))}
         </motion.div>
         </>
