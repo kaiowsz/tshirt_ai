@@ -16,7 +16,7 @@ export const reader = (file: any) =>
     const fileReader = new FileReader();
     fileReader.onload = () => resolve(fileReader.result);
     fileReader.readAsDataURL(file);
-  });
+});
 
 export const getContrastingColor = (color: string) => {
   // Remove the '#' character if it exists
