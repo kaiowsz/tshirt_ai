@@ -9,7 +9,7 @@ interface CameraRigProps {
 }
 
 const CameraRig = ({children}: CameraRigProps) => {
-  const group = useRef()
+  const group: any = useRef()
   const snap = useSnapshot(state);
 
   useFrame((state, delta) => {
@@ -29,7 +29,7 @@ const CameraRig = ({children}: CameraRigProps) => {
 
     easing.damp3(state.camera.position, targetPosition, 0.25, delta)
 
-    easing.dampE(group.current.rotation, [state.pointer.y / 10, -state.pointer.x / 5, 0], 0.5, delta);
+    easing.dampE(group?.current.rotation, [state.pointer.y / 10, -state.pointer.x / 5, 0], 0.5, delta);
 
 
 
