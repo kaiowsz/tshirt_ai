@@ -1,9 +1,13 @@
 import React from 'react'
 import CustomButton from './CustomButton'
 
+interface FilePickerProps {
+  file: any;
+  setFile: React.Dispatch<React.SetStateAction<string>>;
+  readFile: (type: "full" | "logo") => void;
+}
 
-
-const FilePicker = ({ file, setFile, readFile }) => {
+const FilePicker = ({ file, setFile, readFile }: FilePickerProps) => {
   return (
     <div className="filepicker-container">
       <div className="flex-1 flex flex-col">

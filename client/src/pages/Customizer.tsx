@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React, { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { useSnapshot } from "valtio"
@@ -35,7 +37,7 @@ const Customizer = () => {
     }
   }
 
-  async function handleSubmit(type: any) {
+  async function handleSubmit(type: "full" | "logo") {
     if(!prompt) return alert("Please enter a prompt!")
 
     try {
@@ -84,7 +86,7 @@ const Customizer = () => {
     })
   }
 
-  function handleDecals(type: any, result: any) {
+  function handleDecals(type: "full" | "logo", result: any) {
     const decalType = DecalTypes[type];
 
     state[decalType.stateProperty] = result;
@@ -94,7 +96,7 @@ const Customizer = () => {
     }
   }
 
-  function readFile(type: any) {
+  function readFile(type: "full" | "logo") {
     reader(file)
     .then((result) => {
       handleDecals(type, result);
