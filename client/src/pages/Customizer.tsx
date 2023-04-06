@@ -43,7 +43,7 @@ const Customizer = () => {
     try {
       setGeneratingImg(true)
       
-      const response = await fetch(`http://localhost:8080/api/v1/dalle`, {
+      const response = await fetch(`https://kaiowsz-tshirt.onrender.com/api/v1/dalle`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -104,6 +104,14 @@ const Customizer = () => {
     })
   }
 
+  function activateEditorTabs(tabName: string) {
+    if(tabName === activeEditorTab) {
+      setActiveEditorTab("")
+    } else {
+      setActiveEditorTab(tabName)
+    }
+  }
+
   return (
     <AnimatePresence>
       {!snap.intro && (
@@ -112,7 +120,7 @@ const Customizer = () => {
           <div className="flex items-center min-h-screen">
             <div className="editortabs-container tabs">
               {EditorTabs.map(tab => (
-                <Tab key={tab.name} tab={tab} handleClick={() => setActiveEditorTab(tab.name)} />
+                <Tab key={tab.name} tab={tab} handleClick={() => activateEditorTabs(tab.name)} />
               ))}
 
               {generateTabContent()}
