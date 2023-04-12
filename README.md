@@ -15,3 +15,5 @@ This is a project where you can customize your t-shirt using colors/images and a
 <li>NodeJS</li>
 <li>Express</li>
 <li>API of ChatGPT</li>
+
+#### made by kaiowsz.
